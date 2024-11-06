@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <title>Funcionário</title>
+    <link rel="stylesheet" href="funcionario.css">
+</head>
+<body>
+    <div class="feedback-container">
+        <!-- Logo no topo -->
+        <div class="logo-container">
+            <img src="logo.jpeg"Logo da Empresa" class="logo">
+        </div>
+        
+        <h1>Formulário de Satisfação do Funcionário</h1>
+        
+        <ul class="avaliacao">
+            <li class="star-icon ativo" data-avaliacao="1"></li>
+            <li class="star-icon" data-avaliacao="2"></li>
+            <li class="star-icon" data-avaliacao="3"></li>
+            <li class="star-icon" data-avaliacao="4"></li>
+            <li class="star-icon" data-avaliacao="5"></li>
+        </ul>
+
+        <!-- Gênero -->
+        <div class="question">
+            <label for="gender">Qual seu gênero?</label>
+            <select id="gender" name="gender">
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+                <option value="outro">Outro</option>
+            </select>
+        </div>
+
+        <!-- Sugestões -->
+        <div class="question">
+            <label for="suggestions">Você tem alguma sugestão para melhorar o ambiente de trabalho?</label>
+            <textarea id="suggestions" name="suggestions" rows="4" placeholder="Escreva suas sugestões aqui..."></textarea>
+        </div>
+
+        <!-- Motivo para avaliação negativa -->
+        <div class="question" id="negative-reason" style="display: none;">
+            <label for="reason">Por qual motivo você fez uma avaliação negativa?</label>
+            <textarea id="reason" name="reason" rows="4" placeholder="Por favor, explique..."></textarea>
+        </div>
+
+        <!-- Botão de Enviar -->
+        <button type="submit" class="submit-btn" id="submit-btn">Enviar Feedback</button>
+    </div>
+
+    <!-- Modal (Janela de confirmação) -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2>Fim do Beta</h2>
+            <p>Se gostou da ideia, invista nela!</p>
+        </div>
+    </div>
+
+    <script src="funcionario.js"></script>
+</body>
+</html>
