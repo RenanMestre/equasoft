@@ -45,13 +45,13 @@
       if (funcionarioBtnState === 'clicked') {
         const funcionarioBtn = document.getElementById('funcionarioBtn');
         funcionarioBtn.disabled = true;
-        funcionarioBtn.innerText = 'Clicado';
+        funcionarioBtn.innerText = 'Invista na ideia!';
       }
 
       if (administradorBtnState === 'clicked') {
         const administradorBtn = document.getElementById('AdministradorBtn');
         administradorBtn.disabled = true;
-        administradorBtn.innerText = 'Clicado';
+        administradorBtn.innerText = 'Invista na ideia!';
       }
     }
 
@@ -59,12 +59,6 @@
     function closeMessage() {
       document.getElementById('betaMessage').style.display = 'none';
     }
-
-    // Limpar o localStorage quando o usuário fechar ou sair da página
-    window.addEventListener('beforeunload', function() {
-      localStorage.removeItem('funcionarioBtn');
-      localStorage.removeItem('AdministradorBtn');
-    });
   </script>
 </body>
 </html>
