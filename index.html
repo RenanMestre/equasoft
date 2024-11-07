@@ -37,16 +37,10 @@
 
     // Função para verificar o estado dos botões ao carregar a página
     window.onload = function() {
-      // Verifica o estado dos botões
-      const funcionarioBtnState = localStorage.getItem('funcionarioBtn');
+      // Verifica o estado do botão
       const administradorBtnState = localStorage.getItem('AdministradorBtn');
 
       // Se o botão foi clicado, desabilita ele e muda o texto
-      if (funcionarioBtnState === 'clicked') {
-        const funcionarioBtn = document.getElementById('funcionarioBtn');
-        funcionarioBtn.disabled = true;
-        funcionarioBtn.innerText = 'Invista na ideia!';
-      }
 
       if (administradorBtnState === 'clicked') {
         const administradorBtn = document.getElementById('AdministradorBtn');
