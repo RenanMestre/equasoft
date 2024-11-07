@@ -27,14 +27,7 @@
   </div>
 
   <script src="script.js"></script>
-  <script>
-    // Função que desabilita o botão após o clique
-    function disableButton(buttonId) {
-      const button = document.getElementById(buttonId);
-      button.disabled = true;
-      button.innerText = 'Invista na ideia!'; // Mudando o texto do botão após o clique
-      localStorage.setItem(buttonId, 'clicked'); // Armazenando o estado no localStorage
-    }
+  <script>  
 
     // Função para verificar o estado dos botões ao carregar a página
     window.onload = function() {
