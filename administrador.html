@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel do Administrador</title>
+  <link rel="stylesheet" href="administrador.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Incluindo biblioteca para gráficos -->
+</head>
+<body>
+
+  <!-- Menu de Navegação -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="logo.jpeg" alt="Logo da Empresa" class="logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#dashboard">Dashboard</a></li>
+      <li><a href="#relatorios">Relatórios</a></li>
+      <li><a href="#funcionarios">Funcionários</a></li>
+      <li><a href="#configuracoes">Configurações</a></li>
+      <li><a href="#sair">Sair</a></li>
+      <li><button id="adminButton">Administrador</button></li> <!-- Botão de Administrador -->
+    </ul>
+  </nav>
+
+  <!-- Seção de Boas-Vindas -->
+  <section class="welcome-section">
+    <h1>Bem-vindo, Administrador!</h1>
+    <p>Este é o painel de controle da sua empresa. Gerencie todos os aspectos da administração a partir daqui.</p>
+  </section>
+
+  <!-- Cards Informativos -->
+  <section id="dashboard" class="info-cards">
+    <div class="card">
+      <h2>Total de Funcionários</h2>
+      <p>150</p>
+    </div>
+    <div class="card">
+      <h2>Receita Mensal</h2>
+      <p>R$ 350.000,00</p>
+    </div>
+    <div class="card">
+      <h2>Novos Funcionários</h2>
+      <p>5</p>
+    </div>
+    <div class="card">
+      <h2>Tickets Pendentes</h2>
+      <p>12</p>
+    </div>
+  </section>
+
+  <!-- Gráficos de Relatórios -->
+  <section id="relatorios" class="relatorios-section">
+    <h2>Relatórios de Desempenho</h2>
+    <canvas id="performanceChart"></canvas>
+  </section>
+
+  <!-- Seção de Funcionários -->
+  <section id="funcionarios" class="funcionarios-section">
+    <h2>Gestão de Funcionários</h2>
+    <button class="btn" onclick="window.location.href='funcionarios.html'">Ver Todos os Funcionários</button>
+    <button class="btn" onclick="window.location.href='adicionar_funcionario.html'">Adicionar Novo Funcionário</button>
+  </section>
+
+  <!-- Configurações -->
+  <section id="configuracoes" class="configuracoes-section">
+    <h2>Configurações da Empresa</h2>
+    <button class="btn">Alterar Informações de Empresa</button>
+    <button class="btn">Definir Metas e Objetivos</button>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <p>&copy; 2024 Empresa Equacional. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Modo Beta Mensagem -->
+  <div id="betaMessage" class="beta-message">
+    <p>O modo beta acabou! Se gostou da ideia invista nela!</p>
+    <button onclick="closeMessage()">Vamos nessa!</button>
+  </div>
+
+  <script src="administrador.js"></script> <!-- Script para funcionalidades -->
+
+  <script>
+    // Função para fechar a mensagem beta
+    function closeMessage() {
+      document.getElementById("betaMessage").style.display = "none";  // Ocultar mensagem
+      window.location.href = "index.html"; // Redirecionar para a página inicial
+    }
+
+    // Função para atualizar o botão de Administrador
+    function updateAdminButton() {
+      var adminButton = document.getElementById("adminButton");
+      adminButton.innerHTML = "O modo beta acabou!";
+      adminButton.disabled = true; // Desabilitar o botão
+    }
+
+    // Exibir a mensagem beta após 10 segundos
+    setTimeout(function() {
+      document.getElementById("betaMessage").style.display = "block";
+      updateAdminButton();  // Atualizar o botão de Administrador
+      setTimeout(function() {
+        window.location.href = "index.html"; // Redireciona para a página inicial após 10 segundos
+      }, 10000);  // Fecha a página após 10 segundos (10000ms)
+    }, 10000); // Exibe após 10 segundos da carga da página
+  </script>
+
+</body>
+</html>

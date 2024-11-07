@@ -13,10 +13,58 @@
   <div class="welcome-container">
     <h1>Seja bem-vindo!</h1>
     <a href="funcionario.html">
-    <button id="funcionarioBtn">Funcionário</button>
+      <button id="funcionarioBtn" onclick="disableButton('funcionarioBtn')">Funcionário</button>
+    </a>
+    <a href="administrador.html">
+      <button id="AdministradorBtn" onclick="disableButton('AdministradorBtn')">Administrador</button>
     </a>
   </div>
 
+  <div id="betaMessage" class="beta-message" style="display: none;">
+    <p>Este recurso está indisponível no modo beta.</p>
+    <button onclick="closeMessage()">Fechar</button>
+  </div>
+
   <script src="script.js"></script>
+  <script>
+    // Função que desabilita o botão após o clique
+    function disableButton(buttonId) {
+      const button = document.getElementById(buttonId);
+      button.disabled = true;
+      button.innerText = 'Clicado'; // Mudando o texto do botão após o clique
+      localStorage.setItem(buttonId, 'clicked'); // Armazenando o estado no localStorage
+    }
+
+    // Função para verificar o estado dos botões ao carregar a página
+    window.onload = function() {
+      // Verifica o estado dos botões
+      const funcionarioBtnState = localStorage.getItem('funcionarioBtn');
+      const administradorBtnState = localStorage.getItem('AdministradorBtn');
+
+      // Se o botão foi clicado, desabilita ele e muda o texto
+      if (funcionarioBtnState === 'clicked') {
+        const funcionarioBtn = document.getElementById('funcionarioBtn');
+        funcionarioBtn.disabled = true;
+        funcionarioBtn.innerText = 'Clicado';
+      }
+
+      if (administradorBtnState === 'clicked') {
+        const administradorBtn = document.getElementById('AdministradorBtn');
+        administradorBtn.disabled = true;
+        administradorBtn.innerText = 'Clicado';
+      }
+    }
+
+    // Função para fechar a mensagem
+    function closeMessage() {
+      document.getElementById('betaMessage').style.display = 'none';
+    }
+
+    // Limpar o localStorage quando o usuário fechar ou sair da página
+    window.addEventListener('beforeunload', function() {
+      localStorage.removeItem('funcionarioBtn');
+      localStorage.removeItem('AdministradorBtn');
+    });
+  </script>
 </body>
 </html>

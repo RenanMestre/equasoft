@@ -11,9 +11,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000;
+    background-color: orange;
     overflow: hidden;
-    color: white;
     flex-direction: column;
   }
 
@@ -51,6 +50,35 @@
     background-color: #C0392B;
     transform: scale(1.1);
   }
+
+  .beta-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    display: none; /* Inicialmente escondido */
+}
+
+.beta-message button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #721c24;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.beta-message button:hover {
+    background-color: #5a1a18;
+}
+
   
   /* Animação de fading no texto */
   @keyframes fadeIn {
@@ -61,25 +89,6 @@
     100% {
       opacity: 1;
       transform: translateY(0);
-    }
-  }
-  
-  /* Animação de fundo flutuante */
-  @keyframes floatingBackground {
-    0% {
-      background-color: #FF5733;
-    }
-    25% {
-      background-color: #33FF57;
-    }
-    50% {
-      background-color: #3357FF;
-    }
-    75% {
-      background-color: #F1C40F;
-    }
-    100% {
-      background-color: #FF5733;
     }
   }
   

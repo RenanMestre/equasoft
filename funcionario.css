@@ -1,12 +1,12 @@
-/* Resetando margens e padding */
+/* Reset de margens e paddings */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  /* Corpo */
-  body {
+}
+
+/* Body e container principal */
+body {
     font-family: 'Arial', sans-serif;
     background-color: #3E2723; /* Fundo marrom */
     color: white;
@@ -16,99 +16,60 @@
     height: 100vh;
     flex-direction: column;
     padding: 20px;
-  }
-  
-  /* Feedback container */
-  .feedback-container {
+}
+
+/* Contêiner de feedback */
+.feedback-container {
     background-color: #5D4037;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
     max-width: 600px;
     width: 100%;
-    box-sizing: border-box;
     text-align: center;
-    padding-top: 80px; /* Espaço extra para a logo */
-  }
-  
-  /* Logo */
-  .logo-container {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 150px; /* Tamanho máximo da logo */
-    width: 100%;
-    text-align: center;
-  }
-  
-  .logo {
-    max-width: 100%;
-    height: auto; /* A logo mantém sua proporção */
-  }
-  
-  /* Título */
-  h1 {
-    text-align: center;
-    font-size: 2.5rem;
+}
+
+/* Logo */
+.logo-container {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 100px; /* Ajuste o tamanho da logo */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Título */
+h1 {
+    font-size: 2rem;
     margin-bottom: 20px;
     font-weight: bold;
-  }
-  
-  /* Perguntas */
-  .question {
+}
+
+/* Estilos para as perguntas e campos de input */
+.question {
     margin-bottom: 20px;
-  }
-  
-  label {
+}
+
+label {
     font-size: 1.2rem;
     margin-bottom: 10px;
     display: block;
-  }
-  
-  /* Estilo do select e textarea */
-  select, textarea {
+}
+
+input[type="radio"],
+select,
+textarea {
     width: 100%;
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #B0BEC5;
     border-radius: 5px;
-    background-color: #3E2723;
-    color: white;
-  }
-  
-  /* Estilos das estrelas */
-  .avaliacao {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .star-icon {
-    list-style-type: none;
-    cursor: pointer;
-    color: #B0BEC5; /* Cor cinza */
-    font-size: 80px;
-    padding: 10px;
-    transition: transform 0.3s, color 0.3s;
-  }
-  
-  .star-icon::before {
-    content: "\2605"; /* Código da estrela */
-  }
-  
-  .star-icon.selected {
-    color: #FFD700; /* Cor dourada para estrelas selecionadas */
-    transform: scale(1.3); /* Aumento da estrela */
-  }
-  
-  .star-icon:hover {
-    transform: scale(1.2);
-    color: #FFD700;
-  }
-  
-  /* Botão de envio */
-  .submit-btn {
+    border: 1px solid #ddd;
+}
+
+/* Estilo para o botão de enviar */
+.submit-btn {
     width: 100%;
     padding: 15px;
     font-size: 1.2rem;
@@ -118,40 +79,51 @@
     cursor: pointer;
     transition: 0.3s ease;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .submit-btn:hover {
+}
+
+.submit-btn:hover {
     background-color: #FF5722;
     transform: scale(1.05);
-  }
-  
-  .submit-btn:active {
+}
+
+.submit-btn:active {
     transform: scale(1);
-  }
+}
 
-  /* Perguntas */
-.question {
+/* Estrelas */
+.avaliacao {
+    display: flex;
+    justify-content: center;
     margin-bottom: 20px;
-  }
-  
-  label {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    display: block;
-  }
-  
-  textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #B0BEC5;
-    border-radius: 5px;
-    background-color: #3E2723;
-    color: white;
-    margin-top: 10px;
-  }
+}
 
-  /* Modal (Janela de Confirmação) */
+/* Estilo inicial das estrelas apagadas */
+.star-icon {
+    list-style-type: none;
+    cursor: pointer;
+    color: gray; /* Cor inicial das estrelas apagadas */
+    font-size: 40px;
+    padding: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.star-icon::before {
+    content: "\2605"; /* Ícone de estrela */
+}
+
+/* Estilo para as estrelas quando selecionadas (classe 'ativo') */
+.star-icon.ativo {
+    color: #FFD700; /* Cor dourada para estrelas selecionadas */
+    transform: scale(1.3); /* Efeito de aumento para estrelas selecionadas */
+}
+
+/* Estrelas não selecionadas, mas com hover */
+.star-icon:hover {
+    transform: scale(1.2);
+    color: #FFD700;
+}
+
+/* Modal (Janela de Confirmação) */
 .modal {
     display: none; /* Inicialmente escondido */
     position: fixed; /* Fixa a posição na tela */
@@ -163,10 +135,10 @@
     background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
     overflow: auto; /* Permite rolagem caso necessário */
     padding-top: 60px; /* Espaçamento do topo */
-  }
-  
-  /* Conteúdo do Modal */
-  .modal-content {
+}
+
+/* Conteúdo do Modal */
+.modal-content {
     background-color: #fff;
     margin: 5% auto;
     padding: 20px;
@@ -174,10 +146,27 @@
     width: 80%;
     max-width: 500px;
     text-align: center;
-  }
-  
-  /* Estilo para o botão de fechar */
-  .close-btn {
+}
+
+/* Estilo para a caixa de texto de profissão "Outro" */
+#other-profession {
+    width: 50%; /* A largura da caixa de texto será 50% do container, o que é um tamanho médio */
+    min-width: 300px; /* Definindo a largura mínima para 300px, para garantir que não fique muito estreita */
+    padding: 8px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho de fonte legível */
+    border: 1px solid #ccc; /* Borda leve */
+    border-radius: 4px; /* Bordas arredondadas */
+}
+
+#other-profession-container {
+    margin-top: 10px; /* Margem superior para separar da pergunta anterior */
+}
+
+/* Pode adicionar outros estilos personalizados conforme necessário */
+
+
+/* Estilo para o botão de fechar */
+.close-btn {
     color: #aaa;
     font-size: 28px;
     font-weight: bold;
@@ -185,90 +174,61 @@
     top: 10px;
     right: 25px;
     cursor: pointer;
-  }
-  
-  .close-btn:hover,
-  .close-btn:focus {
+}
+
+.close-btn:hover,
+.close-btn:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  }
-  
-  /* Estilo do título do modal */
-  .modal-content h2 {
+}
+
+/* Estilo do título do modal */
+.modal-content h2 {
     font-size: 2rem;
     color: #333;
-  }
-  
-  /* Estilo da mensagem no modal */
-  .modal-content p {
+}
+
+/* Estilo da mensagem no modal */
+.modal-content p {
     font-size: 1.2rem;
     color: #555;
-  }
-  
-  /* Estilo para o botão de enviar (já existente) */
-  .submit-btn {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.2rem;
-    background-color: #FF7043;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s ease;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .submit-btn:hover {
-    background-color: #FF5722;
-    transform: scale(1.05);
-  }
-  
-  .submit-btn:active {
-    transform: scale(1);
-  }
-  
-  /* Para telas pequenas, como celulares */
-  @media (max-width: 768px) {
-    body {
-      padding: 10px;
+}
+
+/* Ajustes para responsividade */
+@media (max-width: 600px) {
+    .logo {
+        width: 80px; /* Menor logo em telas pequenas */
     }
-  
+
     .feedback-container {
-      padding: 20px;
+        padding: 20px;
+        width: 90%; /* Largura maior em dispositivos móveis */
     }
-  
-    h1 {
-      font-size: 2rem;
-    }
-  
+
     .star-icon {
-      font-size: 60px;
+        font-size: 30px; /* Reduzir o tamanho das estrelas em dispositivos móveis */
+        padding: 8px;
     }
-  
-    .submit-btn {
-      font-size: 1.1rem;
-      padding: 12px;
-    }
-  }
-  
-  /* Para telas muito pequenas, como celulares em modo retrato */
-  @media (max-width: 480px) {
+
     h1 {
-      font-size: 1.5rem;
+        font-size: 1.8rem;
     }
-  
-    .feedback-container {
-      padding: 15px;
-    }
-  
-    .star-icon {
-      font-size: 50px;
-    }
-  
+
     .submit-btn {
-      font-size: 1rem;
-      padding: 10px;
+        font-size: 1rem; /* Ajustar tamanho do botão */
+        padding: 12px;
     }
-  }
-  
+
+    .modal-content {
+        width: 90%;
+    }
+
+    .modal-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-content p {
+        font-size: 1rem;
+    }
+}

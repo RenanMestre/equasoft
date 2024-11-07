@@ -9,11 +9,11 @@
     <div class="feedback-container">
         <!-- Logo no topo -->
         <div class="logo-container">
-            <img src="logo.jpeg"Logo da Empresa" class="logo">
+            <img src="logo.jpeg" alt="Logo da Empresa" class="logo">
         </div>
-        
+
         <h1>Formulário de Satisfação do Funcionário</h1>
-        
+
         <ul class="avaliacao">
             <li class="star-icon ativo" data-avaliacao="1"></li>
             <li class="star-icon" data-avaliacao="2"></li>
@@ -36,6 +36,24 @@
         <div class="question">
             <label for="suggestions">Você tem alguma sugestão para melhorar o ambiente de trabalho?</label>
             <textarea id="suggestions" name="suggestions" rows="4" placeholder="Escreva suas sugestões aqui..."></textarea>
+        </div>
+
+        <!-- Profissão -->
+        <div class="question">
+            <label for="profession">Qual profissão você é?</label>
+            <select id="profession" name="profession">
+                <option value="engenheiro">Engenheiro</option>
+                <option value="designer">Administrador</option>
+                <option value="programador">Eletricista</option>
+                <option value="gerente">Mecânico de usinagem</option>
+                <option value="outro">Outro</option>
+            </select>
+        </div>
+
+        <!-- Caixa de texto para "Outro" -->
+        <div class="question" id="other-profession-container" style="display: none;">
+            <label for="other-profession">Qual é sua profissão?</label>
+            <input type="text" id="other-profession" name="other-profession" placeholder="Escreva sua profissão">
         </div>
 
         <!-- Motivo para avaliação negativa -->
