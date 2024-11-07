@@ -17,7 +17,7 @@
       <button id="funcionarioBtn" onclick="disableButton('funcionarioBtn')">Funcionário</button>
     </a>
     <a href="administrador.html">
-      <button id="AdministradorBtn" onclick="disableButton('AdministradorBtn')">Administrador</button>
+      <button id="adminButton" onclick="disableButton('adminButton')">Administrador</button>
     </a>
   </div>
 
@@ -26,27 +26,25 @@
     <button onclick="closeMessage()">Fechar</button>
   </div>
 
-  <script src="script.js"></script>
-  <script>  
+  
+  <script>
+    // Função que desabilita o botão após o clique
+    function disableButton(buttonId) {
+        const button = document.getElementById(buttonId);
+        button.disabled = true;
+        button.innerText = 'Invista na ideia!'; // Mudando o texto do botão após o clique
+        localStorage.setItem(buttonId, 'clicked'); // Armazenando o estado no localStorage
+    }
 
-    // Função para verificar o estado dos botões ao carregar a página
+    // Verificar o estado do botão ao carregar a página
     window.onload = function() {
-      // Verifica o estado do botão
-      const administradorBtnState = localStorage.getItem('AdministradorBtn');
-
-      // Se o botão foi clicado, desabilita ele e muda o texto
-
-      if (administradorBtnState === 'clicked') {
-        const administradorBtn = document.getElementById('AdministradorBtn');
-        administradorBtn.disabled = true;
-        administradorBtn.innerText = 'Invista na ideia!';
-      }
+        const buttonState = localStorage.getItem('adminButton');
+        if (buttonState === 'clicked') {
+            const button = document.getElementById('adminButton');
+            button.disabled = true; // Desabilita o botão se já foi clicado
+            button.innerText = 'Invista na ideia!'; // Muda o texto do botão
+        }
     }
-
-    // Função para fechar a mensagem
-    function closeMessage() {
-      document.getElementById('betaMessage').style.display = 'none';
-    }
-  </script>
+</script>
 </body>
 </html>
