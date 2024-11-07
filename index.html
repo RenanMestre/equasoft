@@ -12,7 +12,7 @@
   <img src="logo.jpeg" alt="Equacional">
   <!-- Tela Inicial -->
   <div class="welcome-container">
-    <h1>Seja bem-vindo!</h1>
+    <h1 id="welcomeMessage">Seja bem-vindo!</h1>
     <a href="funcionario.html">
       <button id="funcionarioBtn" onclick="disableButton('funcionarioBtn')">Funcionário</button>
     </a>
@@ -21,12 +21,6 @@
     </a>
   </div>
 
-  <div id="betaMessage" class="beta-message" style="display: none;">
-    <p>Este recurso está indisponível no modo beta.</p>
-    <button onclick="closeMessage()">Fechar</button>
-  </div>
-
-  
   <script>
     // Função que desabilita o botão após o clique
     function disableButton(buttonId) {
@@ -34,17 +28,42 @@
         button.disabled = true;
         button.innerText = 'Invista na ideia!'; // Mudando o texto do botão após o clique
         localStorage.setItem(buttonId, 'clicked'); // Armazenando o estado no localStorage
+        checkButtonsState(); // Verificar o estado dos botões ao clicar
     }
 
-    // Verificar o estado do botão ao carregar a página
-    window.onload = function() {
-        const buttonState = localStorage.getItem('adminButton');
-        if (buttonState === 'clicked') {
-            const button = document.getElementById('adminButton');
-            button.disabled = true; // Desabilita o botão se já foi clicado
-            button.innerText = 'Invista na ideia!'; // Muda o texto do botão
+    // Função para verificar se ambos os botões foram clicados
+    function checkButtonsState() {
+        const funcionarioState = localStorage.getItem('funcionarioBtn');
+        const adminState = localStorage.getItem('adminButton');
+        
+        // Se ambos os botões estiverem clicados, mostra a mensagem de "Invista na ideia"
+        if (funcionarioState === 'clicked' && adminState === 'clicked') {
+            document.getElementById('welcomeMessage').innerText = 'Se gostar da ideia, invista nela!';
         }
     }
-</script>
+
+    // Verificar o estado dos botões ao carregar a página
+    window.onload = function() {
+        const funcionarioState = localStorage.getItem('funcionarioBtn');
+        const adminState = localStorage.getItem('adminButton');
+
+        // Desabilitar os botões de acordo com o estado armazenado
+        if (funcionarioState === 'clicked') {
+            const funcionarioButton = document.getElementById('funcionarioBtn');
+            funcionarioButton.disabled = true;
+            funcionarioButton.innerText = 'Invista na ideia!';
+        }
+
+        if (adminState === 'clicked') {
+            const adminButton = document.getElementById('adminButton');
+            adminButton.disabled = true;
+            adminButton.innerText = 'Invista na ideia!';
+        }
+
+        // Verificar o estado dos botões e mudar a mensagem
+        checkButtonsState();
+    }
+  </script>
+
 </body>
 </html>
