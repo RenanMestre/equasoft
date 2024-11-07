@@ -202,8 +202,8 @@ textarea {
     }
 
     .feedback-container {
-        padding: 20px;
-        width: 90%; /* Largura maior em dispositivos móveis */
+        padding: 10px;
+        width: 10px; /* Largura maior em dispositivos móveis */
     }
 
     .star-icon {
@@ -212,11 +212,10 @@ textarea {
     }
 
     h1 {
-        font-size: 1.8rem;
+        font-size: 20px;
     }
 
     .submit-btn {
-        font-size: 1rem; /* Ajustar tamanho do botão */
         padding: 12px;
     }
 

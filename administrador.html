@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel do Administrador</title>
   <link rel="stylesheet" href="administrador.css">
+  <link rel="shortcut icon" type="imagex/png" href="logo.jpeg">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Incluindo biblioteca para gráficos -->
 </head>
 <body>
@@ -44,15 +45,15 @@
   <!-- Seção de Funcionários -->
   <section id="funcionarios" class="funcionarios-section">
     <h2>Gestão de Funcionários</h2>
-    <button class="btn" onclick="window.location.href='funcionarios.html'">Ver Todos os Funcionários</button>
-    <button class="btn" onclick="window.location.href='adicionar_funcionario.html'">Adicionar Novo Funcionário</button>
+    <button class="btn" id="verFuncionarios" onclick="showBetaMessage('verFuncionarios')">Ver Todos os Funcionários</button>
+    <button class="btn" id="adicionarFuncionario" onclick="showBetaMessage('adicionarFuncionario')">Adicionar Novo Funcionário</button>
   </section>
-
+  
   <!-- Configurações -->
   <section id="configuracoes" class="configuracoes-section">
     <h2>Configurações da Empresa</h2>
-    <button class="btn">Alterar Informações de Empresa</button>
-    <button class="btn">Definir Metas e Objetivos</button>
+    <button class="btn" id="alterarInformacoes" onclick="showBetaMessage('alterarInformacoes')">Alterar Informações de Empresa</button>
+    <button class="btn" id="definirMetas" onclick="showBetaMessage('definirMetas')">Definir Metas e Objetivos</button>
   </section>
 
   <!-- Rodapé -->
@@ -66,13 +67,41 @@
     <button onclick="closeMessage()">Vamos nessa!</button>
   </div>
 
+  <!-- Overlay para bloquear interação -->
+  <div id="overlay" class="overlay"></div>
+
   <script src="administrador.js"></script> <!-- Script para funcionalidades -->
 
   <script>
-    // Função para fechar a mensagem beta
+    // Função para fechar a mensagem beta e desbloquear a página
     function closeMessage() {
       document.getElementById("betaMessage").style.display = "none";  // Ocultar mensagem
+      document.getElementById("overlay").style.display = "none";  // Ocultar overlay
+      document.body.style.overflow = "auto"; // Habilitar rolagem novamente
       window.location.href = "index.html"; // Redirecionar para a página inicial
+    }
+
+    // Função para exibir mensagem de função não disponível no modo beta
+    function showBetaMessage(buttonId) {
+      alert("Esta função está desativada no modo Beta.");
+    }
+
+    // Função para desabilitar os botões ao carregar a página
+    window.onload = function() {
+      // Desabilitar os botões
+      const buttons = [
+        'verFuncionarios', 
+        'adicionarFuncionario', 
+        'alterarInformacoes', 
+        'definirMetas'
+      ];
+
+      buttons.forEach(buttonId => {
+        const button = document.getElementById(buttonId);
+        button.disabled = true;  // Desabilitar o botão
+        button.style.backgroundColor = "#ccc";  // Cor de fundo para indicar que está desativado
+        button.style.cursor = "not-allowed";  // Mostrar o cursor como desabilitado
+      });
     }
 
     // Função para atualizar o botão de Administrador
@@ -82,15 +111,47 @@
       adminButton.disabled = true; // Desabilitar o botão
     }
 
-    // Exibir a mensagem beta após 10 segundos
+    // Exibir a mensagem beta após 10 segundos e bloquear interação com a página
     setTimeout(function() {
       document.getElementById("betaMessage").style.display = "block";
+      document.getElementById("overlay").style.display = "block";  // Exibir overlay
+      document.body.style.overflow = "hidden"; // Bloquear rolagem da página
       updateAdminButton();  // Atualizar o botão de Administrador
       setTimeout(function() {
         window.location.href = "index.html"; // Redireciona para a página inicial após 10 segundos
       }, 10000);  // Fecha a página após 10 segundos (10000ms)
     }, 10000); // Exibe após 10 segundos da carga da página
   </script>
+
+  <!-- Estilos do Overlay -->
+  <style>
+    /* Estilos do Overlay */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;  /* A sobrecarga da tela ficará por cima de outros elementos */
+    }
+
+    /* Bloquear rolagem */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Quando o overlay estiver ativo, bloqueia a rolagem */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 
 </body>
 </html>
